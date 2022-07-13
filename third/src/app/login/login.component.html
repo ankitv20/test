@@ -1,0 +1,19 @@
+<!-- Reactive Forms -->
+
+<form class="container" [formGroup]="loginForm">
+    <h4>Login - Reactive Form</h4>
+    <input type="email" [formControl]="email" placeholder="Enter Email Id">
+    <h5 class="red-text" [hidden]="email.valid || email.untouched"> Enter Correct Email</h5>
+
+    
+    <input type="password" [formControl]="password" placeholder="Enter Password">
+    <h5 class="red-text" [hidden]="password.valid || password.untouched"> Password must be min 6 charecter long</h5>
+
+    <!-- perform login() when click if complete form has valid values. -->
+    <button class="btn green" (click)="login()" [disabled]="loginForm.invalid"> Login </button>
+
+    <button class="btn red" (click)="reset()" style="margin-left: 20px;"> Reset</button>
+</form>
+<!-- <h3>Email Id- {{email.value}} </h3>
+<h3>Valid Email- {{email.valid}} </h3>
+<h3>Is untouched- {{email.untouched}} </h3> -->

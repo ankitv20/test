@@ -1,0 +1,55 @@
+
+<h3>Hey!! I am {{name | titlecase}}</h3>
+<h3>I am {{age}} years old </h3>
+<h3>I am a {{design}} in this company </h3>
+<h3>My annual salary is  {{12 *salary | currency:'INR'}} </h3>
+
+<!-- Date Pipe -->
+<input type="date" [(ngModel)]="myDate">
+{{myDate | date:'dd MMMM YYYY'}} <br><br>
+
+
+<button class="btn red">Click Me!!</button><br><br>
+
+<!-- Property Binding, dont use {{}}, doesn't support boolean -->
+<button [class]="btnColor">Click Me!!</button><br><br>
+<button class="btn indigo" [disabled]="isDisabled">Click Me!!</button><br><br>
+
+<!-- Event Binding -->
+<button class="btn green" (click)="showSalary()">Show Salary</button><br><br>
+
+<!-- Double Binding, 2 Way Data Binding -->
+<input type="text" [value]="inputValue" (input)="inputValue = $any($event.target).value" />
+<h3>{{inputValue.concat(' Extraaa!!')}}</h3>
+
+<input type="text" [(ngModel)]="inputValue">
+<h3>{{inputValue.concat(' ngModel Bind!!!')}}</h3>
+
+<!-- ngIf Directive, Structural directive, coz can change structure of DOM-->
+<h4 *ngIf="salary > 50000; else lowsal"> Badhiya dhandha banaya hai </h4>
+<ng-template #lowsal>
+    <h4>Or Mehnat ker Or dhandha bana!!</h4>
+</ng-template>
+
+<!-- ngFor Directive, Structural directive -->
+
+<!-- <ul>
+    <li><h4>{{fruits[0]}}</h4></li>
+    <li><h4>{{fruits[1]}}</h4></li>
+    <li><h4>{{fruits[2]}}</h4></li>
+    <li><h4>{{fruits[3]}}</h4></li>
+    <li><h4>{{fruits[4]}}</h4></li>
+    <li><h4>{{fruits[5]}}</h4></li>
+</ul> -->
+
+<ul>
+    <li *ngFor="let f of fruits; index as i">
+        <h4> {{i + 1}} {{f}}</h4>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let f of fruits; index as i; even as e" [ngClass]="{'red': e, 'pink': !e}">
+        <h4>{{i}} -- {{f}}</h4>
+    </li>
+</ul>

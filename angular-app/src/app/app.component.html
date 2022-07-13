@@ -1,0 +1,37 @@
+
+<!-- <app-proflie></app-proflie> -->
+
+<!-- Sending all this information to child component(users) using Input Decorator dynamically -->
+
+<div *ngIf="show" style="display:flex; justify-content: space-evenly; flex-wrap: wrap;">
+
+<app-users *ngFor =" let u of users"
+    
+    [imagePath]="u.image" 
+    [name]="u.name" 
+    [age]="u.age" 
+    [salary]="u.salary" 
+    [city]="u.city" 
+    [role]="u.role"
+    (myEvent)="getData($event)"
+    [title]="tagTitle"
+    [Pdata]="data"
+    
+    >
+
+    <!-- This is called text projection, sending html data rather than raw information to selector tag -->
+    <h2>{{tagTitle}}</h2> 
+    <input type="text" [(ngModel)]="tagTitle">
+    <h2>{{data}}</h2>
+    <input type="text" [(ngModel)] ="data">
+    
+</app-users>
+
+</div>
+
+<h2>{{phoneNo | countryCode:"USA"}}</h2>
+
+<button (click)="show = !show">Toggle</button>
+
+
+

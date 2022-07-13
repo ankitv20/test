@@ -1,0 +1,31 @@
+<div class="card" style="width: 600px"  appHighlight>
+    
+   <!-- for data  projection -->
+    <ng-content></ng-content> 
+    
+
+    <div class="card-image">
+        <img [src]="imagePath">
+        <span class="card-title"> {{name | uppercase}}</span>
+    </div>
+
+    <div class="card-content">
+
+        <h3> Name - {{name}} </h3>
+        <h3> Age - {{age}}</h3>
+        <h3> Salary - {{salary | currency :'INR'}} </h3>
+        <h3> City - {{city}} </h3>
+        <h3> Role - {{role}}</h3>
+
+    </div>
+    <button class="btn pink" (click)="passData()" > Pass Output Data</button>
+    <ng-content select="h3"></ng-content>
+</div>
+
+<!-- <img [src]="imagePath" height="500px" width="500px" >
+ <h3> Hey!! I am {{name}} </h3> 
+ <h3> I am {{age}} years old</h3> 
+ <h3> My salary is {{salary | currency :'INR'}} </h3> 
+ <h3> I belong to {{city}} </h3> 
+ <h3> I am a {{role}} in this company </h3> 
+ <h3>==============================================================</h3> -->

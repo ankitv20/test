@@ -1,0 +1,37 @@
+<!-- Template Driven Forms, most of the coding will be done in template(HTML form only) -->
+
+<form class="container" #registerForm="ngForm">
+
+    <h4>Register - Template Driven Form</h4>
+
+    <input type="email"
+     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+     name="email"
+     required
+     ngModel
+     #emailField="ngModel"
+     placeholder="Enter Email Id"/>
+    <h5 class="red-text" [hidden]="emailField.valid || emailField.untouched"> Enter Correct Email</h5>
+
+    <input type="password"
+     name="password"
+     required
+     ngModel
+     #passField="ngModel"
+     placeholder="Enter Password"
+     minlength="6"
+    />
+
+    <h5 class="red-text" [hidden]="passField.valid || passField.untouched"> Password must be min 6 charecter long</h5>
+
+    <button class=" btn green" (click)="register(registerForm)"[disabled]="registerForm.invalid">Register </button>
+
+    <button class="btn red" style="margin-left: 20px;" (click)="reset(registerForm)"> Reset </button>
+</form>
+
+<!-- <h4>
+    {{registerForm.value | json}}
+</h4> -->
+<!-- <h3>Email Id- {{email.value}} </h3>
+<h3>Valid Email- {{email.valid}} </h3>
+<h3>Is untouched- {{email.untouched}} </h3> -->
